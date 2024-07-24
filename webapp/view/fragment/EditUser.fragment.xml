@@ -1,0 +1,44 @@
+<Dialog
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    title="{ path: 'view>/edit', formatter: '.formatDialogTitle' }"
+>
+    <content>
+        <f:SimpleForm
+            editable="true"
+            title="Person"
+        >
+            <Label text="EmployeeID" />
+            <Input
+                value="{edit>/EmployeeID}"
+                enabled="{ path: 'view>/edit', formatter: '.not' }"
+            />
+            <Label text="Firstname" />
+            <Input value="{edit>/FirstName}" />
+            <Label text="Lastname" />
+            <Input value="{edit>/LastName}" />
+            <Label text="Title" />
+            <Input value="{edit>/Title}" />
+            <Label text="Address" />
+            <Input value="{edit>/Address}" />
+            <Label text="HomePhone" />
+            <Input value="{edit>/HomePhone}" />
+            <Label text="City" />
+            <Input value="{edit>/City}" />
+        </f:SimpleForm>
+    </content>
+    <buttons>
+        <!--  set new flag as custom data on the save button so that we know what to do when button is clicked depending on the use case  -->
+        <Button
+            text="Save"
+            press="onDialogConfirm"
+            data:edit="{view>/edit}"
+        />
+        <Button
+            text="Cancel"
+            press="onDialogCancel"
+        />
+    </buttons>
+</Dialog>
